@@ -1,0 +1,33 @@
+<div class="container">
+    <nz-card>
+        <h1>Moderatoro-ERP</h1>
+        <form nz-form [formGroup]="formLogin" class="login-form" (ngSubmit)="login()">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Digite o login, por favor.">
+                    <nz-input-group nzPrefixIcon="user">
+                        <input type="text" nz-input formControlName="login" placeholder="Login" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Digite a sua senha, por favor.">
+                    <nz-input-group nzPrefixIcon="lock">
+                        <input type="password" nz-input formControlName="password" placeholder="Senha" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <label nz-checkbox formControlName="remember">
+                        <span>Lembrar minha senha?</span>
+                    </label>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </nz-card>
+</div>
