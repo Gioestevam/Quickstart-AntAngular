@@ -1,6 +1,6 @@
 <div class="container">
     <nz-card>
-        <h1>Moderatoro-ERP</h1>
+        <h1>QuickStart-angular</h1>
         <form nz-form [formGroup]="formLogin" class="login-form" (ngSubmit)="login()">
             <nz-form-item>
                 <nz-form-control nzErrorTip="Digite o login, por favor.">
@@ -25,7 +25,18 @@
             </nz-form-item>
             <nz-form-item>
                 <nz-form-control>
-                    <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+                    <button *ngIf="!isLoading" nz-button class="login-form-button" [disabled]="!formLogin.valid" [nzType]="'primary'">Entrar</button>
+                    <button *ngIf="isLoading" nz-button class="login-form-button" [disabled]="true" [nzType]="'primary'">
+                        <ng-template #indicatorTemplate><i nz-icon nzType="loading" style="font-size: 24px;"></i> </ng-template>
+                        <nz-spin nzSimple [nzIndicator]="indicatorTemplate"> </nz-spin>
+                    </button>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <div class="login-form-forgot">
+                        <span>Esqueceu sua senha?</span>
+                    </div>
                 </nz-form-control>
             </nz-form-item>
         </form>

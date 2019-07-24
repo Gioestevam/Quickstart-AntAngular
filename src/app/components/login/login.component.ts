@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MessageService } from '../../modules/shared/services/message/message.service';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  private formLogin: FormGroup;
+  formLogin: FormGroup;
+  isLoading = false;
 
   constructor(
     private renderer: Renderer2,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private message: MessageService
   ) {
     this.renderer.setStyle(document.body, 'background-color', '#342D49')
   }
@@ -26,7 +29,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.formLogin.value);
+    this.isLoading = true;
+    this.isLoading = false;
+    this.message.showMessage('success', 'Usuário logado com sucesso!');
   }
 
 }
